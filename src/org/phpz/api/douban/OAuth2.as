@@ -1,13 +1,13 @@
-package org.phpz.api.douban 
+package org.phpz.api.douban
 {
     import flash.net.URLRequestMethod;
     
-	/**
+    /**
      * OAuth 2.0
      * Douban API OAuth 2.0
      * @author Seven Yu
      */
-    public class OAuth2 extends APIBase 
+    public class OAuth2 extends APIBase
     {
         
         private var _baseURL:String;
@@ -16,7 +16,7 @@ package org.phpz.api.douban
         public static const TOKEN:String = 'token';
         public static const PASSWORD:String = 'password';
         public static const AUTHORIZATION_CODE:String = 'authorization_code';
-        public static const REFRESH_TOKEN :String = 'refresh_token';
+        public static const REFRESH_TOKEN:String = 'refresh_token';
         
         /**
          * OAuth 2.0
@@ -38,7 +38,7 @@ package org.phpz.api.douban
         public function auth(clientId:String, redirectUri:String, responseType:String, scope:Array = null, state:String = null):void
         {
             var scopeString:String = scope ? scope.join(',') : null;
-            apiToUrl(baseURL + '/service/auth2/auth', { 'client_id': clientId, 'redirect_uri': redirectUri, 'response_type':responseType, 'scope': scopeString, 'state':state } );
+            apiToUrl(baseURL + '/service/auth2/auth', {'client_id': clientId, 'redirect_uri': redirectUri, 'response_type': responseType, 'scope': scopeString, 'state': state});
         }
         
         /**
@@ -50,7 +50,7 @@ package org.phpz.api.douban
          */
         public function accessToken(clientId:String, clientSecret:String, redirectUri:String, code:String):void
         {
-            apiSend(baseURL + '/service/auth2/token', URLRequestMethod.POST, { 'client_id': clientId, 'client_secret':clientSecret, 'redirect_uri': redirectUri, 'grant_type':OAuth2.AUTHORIZATION_CODE, 'code':code }, false );
+            apiSend(baseURL + '/service/auth2/token', URLRequestMethod.POST, {'client_id': clientId, 'client_secret': clientSecret, 'redirect_uri': redirectUri, 'grant_type': OAuth2.AUTHORIZATION_CODE, 'code': code}, false);
         }
         
         /**
@@ -62,7 +62,7 @@ package org.phpz.api.douban
          */
         public function refreshToken(clientId:String, clientSecret:String, redirectUri:String, refreshToken:String):void
         {
-            apiSend(baseURL + '/service/auth2/token', URLRequestMethod.POST, { 'client_id': clientId, 'client_secret':clientSecret, 'redirect_uri': redirectUri, 'grant_type':OAuth2.REFRESH_TOKEN, 'refresh_token':refreshToken }, false );
+            apiSend(baseURL + '/service/auth2/token', URLRequestMethod.POST, {'client_id': clientId, 'client_secret': clientSecret, 'redirect_uri': redirectUri, 'grant_type': OAuth2.REFRESH_TOKEN, 'refresh_token': refreshToken}, false);
         }
         
         /**
@@ -74,7 +74,7 @@ package org.phpz.api.douban
          */
         public function xAuth(clientId:String, clientSecret:String, username:String, password:String):void
         {
-            apiSend(baseURL + '/service/auth2/token', URLRequestMethod.POST, { 'client_id': clientId, 'client_secret':clientSecret, 'grant_type':OAuth2.PASSWORD, 'username':username, 'password':password }, false);
+            apiSend(baseURL + '/service/auth2/token', URLRequestMethod.POST, {'client_id': clientId, 'client_secret': clientSecret, 'grant_type': OAuth2.PASSWORD, 'username': username, 'password': password}, false);
         }
         
         /**
@@ -84,7 +84,7 @@ package org.phpz.api.douban
         {
             return _baseURL;
         }
-        
+    
     }
 
 }

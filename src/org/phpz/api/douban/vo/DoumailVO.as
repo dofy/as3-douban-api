@@ -1,10 +1,11 @@
-package org.phpz.api.douban.vo 
+package org.phpz.api.douban.vo
 {
-	/**
-     * ...
+    
+    /**
+     * 豆邮数据对象
      * @author Seven Yu
      */
-    public class DoumailVO 
+    public class DoumailVO
     {
         
         public var status:String; // Y:垃圾未读 X:垃圾已读 U:未读 R:已读
@@ -15,7 +16,7 @@ package org.phpz.api.douban.vo
         public var published:Date;
         public var content:String;
         
-        public function DoumailVO(data:Object) 
+        public function DoumailVO(data:Object)
         {
             status = data['status'];
             id = data['id'];
@@ -34,7 +35,7 @@ package org.phpz.api.douban.vo
             
             published = new Date(ds[0], ds[1], ds[2], ts[0], ts[1], ts[2]);
         }
-        
+    
     }
 
 }

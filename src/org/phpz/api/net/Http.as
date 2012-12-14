@@ -1,4 +1,4 @@
-package org.phpz.api.net 
+package org.phpz.api.net
 {
     import flash.events.Event;
     import flash.events.EventDispatcher;
@@ -8,7 +8,7 @@ package org.phpz.api.net
     import flash.net.URLRequest;
     import flash.net.URLVariables;
     
-	/**
+    /**
      * HTTP 请求基类
      * @author Seven Yu
      */
@@ -16,7 +16,6 @@ package org.phpz.api.net
     {
         
         protected var loader:ApiLoader;
-        
         
         protected function toURL(url:String, params:Object = null, window:String = null):void
         {
@@ -68,7 +67,7 @@ package org.phpz.api.net
          * 处理 IO 错误
          * @param e
          */
-        protected function ioErrorHandler(e:IOErrorEvent):void 
+        protected function ioErrorHandler(e:IOErrorEvent):void
         {
             trace(e);
         }
@@ -77,7 +76,7 @@ package org.phpz.api.net
          * 处理 HTTP Status 事件
          * @param e
          */
-        protected function statusHandler(e:HTTPStatusEvent):void 
+        protected function statusHandler(e:HTTPStatusEvent):void
         {
             var loader:ApiLoader = e.target as ApiLoader;
             trace('STATUS:', e.status, loader.url);
@@ -88,11 +87,11 @@ package org.phpz.api.net
          * 加载完成事件
          * @param e
          */
-        protected function completeHandler(e:Event):void 
+        protected function completeHandler(e:Event):void
         {
             trace('<COMPLETE>\n', e.target.data);
         }
-        
+    
     }
 
 }

@@ -1,4 +1,4 @@
-package org.phpz.api.douban.events 
+package org.phpz.api.douban.events
 {
     import flash.events.Event;
     
@@ -6,7 +6,7 @@ package org.phpz.api.douban.events
      * API Event
      * @author Seven Yu
      */
-    public class ApiEvent extends Event 
+    public class ApiEvent extends Event
     {
         
         public static const SUCCESS:String = 'success';
@@ -25,7 +25,7 @@ package org.phpz.api.douban.events
          * @param status        API 请求 http status
          * @param url           API 请求地址
          * @param data          返回数据
-         * @param bubbles       
+         * @param bubbles
          * @param cancelable
          */
         public function ApiEvent(type:String, method:String, status:int, url:String, data:Object, bubbles:Boolean = false, cancelable:Boolean = false)
@@ -71,16 +71,16 @@ package org.phpz.api.douban.events
             return _data;
         }
         
-        public override function clone():Event 
-        { 
+        public override function clone():Event
+        {
             return new ApiEvent(type, method, status, url, data, bubbles, cancelable);
-        } 
-        
-        public override function toString():String 
-        { 
-            return formatToString("ApiEvent", "type", "method", "status", "url"); 
         }
         
-    }
+        public override function toString():String
+        {
+            return formatToString("ApiEvent", "type", "method", "status", "url");
+        }
     
+    }
+
 }

@@ -2,14 +2,14 @@ package org.phpz.api.douban
 {
     import flash.net.URLRequestMethod;
     import org.phpz.api.douban.events.ApiEvent;
-	
-	/**
-	 * 用户 API
-	 * @author Seven Yu
-	 */
-	public class User extends APIBase
-	{
-		
+    
+    /**
+     * 用户 API
+     * @author Seven Yu
+     */
+    public class User extends APIBase
+    {
+        
         /**
          * 获取当前授权用户信息
          */
@@ -35,11 +35,12 @@ package org.phpz.api.douban
          */
         public function search(q:String, start:int = 0, count:int = 20):void
         {
-            apiSend('/v2/user', URLRequestMethod.GET, { 'q':q, 'start':start, 'count':count } );
+            apiSend('/v2/user', URLRequestMethod.GET, {'q': q, 'start': start, 'count': count});
         }
         
-        public function User();
-        
-	}
-	
+        public function User()
+        {
+        }
+    }
+
 }

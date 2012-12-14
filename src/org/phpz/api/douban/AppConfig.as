@@ -1,10 +1,11 @@
-package org.phpz.api.douban 
+package org.phpz.api.douban
 {
-	/**
+    
+    /**
      * APP 配置文件, 使用 API 前先对该类进行设置
      * @author Seven Yu
      */
-    public class AppConfig 
+    public class AppConfig
     {
         /**
          * API 地址
@@ -36,8 +37,10 @@ package org.phpz.api.douban
          */
         static public var refreshToken:String = '';
         
-        public function AppConfig();
-        
+        public function AppConfig()
+        {
+        }
+    
     }
 
 }

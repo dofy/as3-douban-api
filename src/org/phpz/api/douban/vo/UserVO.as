@@ -1,10 +1,11 @@
-package org.phpz.api.douban.vo 
+package org.phpz.api.douban.vo
 {
-	/**
-     * ...
+    
+    /**
+     * User 数据对象
      * @author Seven Yu
      */
-    public class UserVO 
+    public class UserVO
     {
         
         public var id:String;
@@ -18,7 +19,7 @@ package org.phpz.api.douban.vo
         public var loc_name:String;
         public var desc:String;
         
-        public function UserVO(data:Object) 
+        public function UserVO(data:Object)
         {
             id = data['id'];
             uid = data['uid'];
@@ -34,7 +35,7 @@ package org.phpz.api.douban.vo
                 desc = data['desc'];
             }
         }
-        
+    
     }
 
 }

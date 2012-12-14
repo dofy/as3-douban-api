@@ -1,22 +1,19 @@
-package org.phpz.api.douban 
+package org.phpz.api.douban
 {
     import flash.events.Event;
     import flash.net.URLRequestHeader;
     import org.phpz.api.douban.events.ApiEvent;
     import org.phpz.api.net.ApiLoader;
     import org.phpz.api.net.Http;
-	
     
-    [Event(name = "success", type = "org.phpz.api.douban.events.ApiEvent")] 
+    [Event(name="success",type="org.phpz.api.douban.events.ApiEvent")]
+    [Event(name="failed",type="org.phpz.api.douban.events.ApiEvent")]
     
-    [Event(name = "failed", type = "org.phpz.api.douban.events.ApiEvent")] 
-    
-    
-	/**
+    /**
      * API 请求基类
      * @author Seven Yu
      */
-    public class APIBase extends Http 
+    public class APIBase extends Http
     {
         
         /**
@@ -56,7 +53,7 @@ package org.phpz.api.douban
             var apiUrl:String = loader.url.replace(AppConfig.baseURL, '');
             
             // 尝试解析返回数据
-            try 
+            try
             {
                 data = JSON.parse(loader.data);
                 if (!data['code'])
@@ -70,12 +67,12 @@ package org.phpz.api.douban
                 // 若 data == null, http status 缺为 200 (删除类返回)
                 if (loader.data == 'null' && loader.httpStatus == 200)
                 {
-                    data = { 'code':0, 'msg':'SUCCESS~~' };
+                    data = {'code': 0, 'msg': 'SUCCESS~~'};
                 }
                 // 发生其他错误
                 else
                 {
-                    data = { 'code': 7999, 'msg': 'UNKNOW ERROR!!' };
+                    data = {'code': 7999, 'msg': 'UNKNOW ERROR!!'};
                 }
             }
             
@@ -100,7 +97,9 @@ package org.phpz.api.douban
             }
         }
         
-        public function APIBase();
+        public function APIBase()
+        {
+        }
     }
 
 }

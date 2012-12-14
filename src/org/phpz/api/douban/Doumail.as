@@ -2,13 +2,13 @@ package org.phpz.api.douban
 {
     import flash.net.URLRequestMethod;
     import org.phpz.api.douban.events.ApiEvent;
-	
-	/**
-	 * 豆邮 API
-	 * @author Seven Yu
-	 */
-	public class Doumail extends APIBase
-	{
+    
+    /**
+     * 豆邮 API
+     * @author Seven Yu
+     */
+    public class Doumail extends APIBase
+    {
         
         /**
          * 获取一封豆邮
@@ -17,9 +17,9 @@ package org.phpz.api.douban
          */
         public function mail(id:String, keepUnread:Boolean = false):void
         {
-            apiSend('/v2/doumail/' + id, URLRequestMethod.GET, { 'keep-unread': keepUnread } );
+            apiSend('/v2/doumail/' + id, URLRequestMethod.GET, {'keep-unread': keepUnread});
         }
-		
+        
         /**
          * 授权用户收件箱
          */
@@ -54,7 +54,7 @@ package org.phpz.api.douban
          */
         public function mails(title:String, content:String, receiverId:String, captchaToken:String = null, captchaString:String = null):void
         {
-            apiSend('/v2/doumails', URLRequestMethod.POST, { 'title':title, 'content':content, 'receiver_id': receiverId, 'captcha_token':captchaToken, 'captcha_string':captchaString } );
+            apiSend('/v2/doumails', URLRequestMethod.POST, {'title': title, 'content': content, 'receiver_id': receiverId, 'captcha_token': captchaToken, 'captcha_string': captchaString});
         }
         
         /**
@@ -72,7 +72,7 @@ package org.phpz.api.douban
          */
         public function markAllAsRead(ids:Array):void
         {
-            apiSend('/v2/doumail/read', URLRequestMethod.PUT, { 'ids': ids.join(',') } );
+            apiSend('/v2/doumail/read', URLRequestMethod.PUT, {'ids': ids.join(',')});
         }
         
         /**
@@ -90,11 +90,13 @@ package org.phpz.api.douban
          */
         public function deleteAll(ids:Array):void
         {
-            apiSend('/v2/doumail/delete', URLRequestMethod.POST, { 'ids':ids.join(',') } );
+            apiSend('/v2/doumail/delete', URLRequestMethod.POST, {'ids': ids.join(',')});
         }
         
-        public function Doumail();
-		
-	}
-	
+        public function Doumail()
+        {
+        }
+    
+    }
+
 }
