@@ -1,5 +1,6 @@
 package org.phpz.api.douban.vo
 {
+    import org.phpz.api.tools.DateParser;
     
     /**
      * User 数据对象
@@ -14,7 +15,7 @@ package org.phpz.api.douban.vo
         public var avatar:String;
         public var alt:String;
         public var relation:String;
-        public var created:String;
+        public var created:Date;
         public var loc_id:String;
         public var loc_name:String;
         public var desc:String;
@@ -29,7 +30,7 @@ package org.phpz.api.douban.vo
             if (data['created'])
             {
                 relation = data['relation'];
-                created = data['created'];
+                created = DateParser.parse(data['created']);
                 loc_id = data['loc_id'];
                 loc_name = data['loc_name'];
                 desc = data['desc'];

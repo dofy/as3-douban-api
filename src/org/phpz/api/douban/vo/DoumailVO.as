@@ -1,5 +1,6 @@
 package org.phpz.api.douban.vo
 {
+    import org.phpz.api.tools.DateParser;
     
     /**
      * 豆邮数据对象
@@ -23,17 +24,8 @@ package org.phpz.api.douban.vo
             sender = new UserVO(data['sender']);
             receiver = new UserVO(data['receiver']);
             title = data['title'];
-            published = data['published'];
+            published = DateParser.parse(data['published']);
             content = data['content'];
-        }
-        
-        private function setPublished(dateString:String):void
-        {
-            var dt:Array = dateString.split(' ');
-            var ds:Array = dt[0].split('-');
-            var ts:Array = dt[1].split(':');
-            
-            published = new Date(ds[0], ds[1], ds[2], ts[0], ts[1], ts[2]);
         }
     
     }
