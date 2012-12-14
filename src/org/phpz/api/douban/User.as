@@ -15,7 +15,7 @@ package org.phpz.api.douban
             super();
         }
         
-        public function getMe():void
+        public function me():void
         {
             apiSend('/v2/user/~me', URLRequestMethod.GET);
         }
@@ -33,7 +33,7 @@ package org.phpz.api.douban
         protected override function succFunc(url:String, data:Object):void
         {
             trace('SUCCESS >>>', url, '\n', JSON.stringify(data));
-            dispatchEvent(new ApiEvent(ApiEvent.SUCCESS, url, null));
+            dispatchEvent(new ApiEvent(ApiEvent.SUCCESS, url, data));
         }
 		
 	}

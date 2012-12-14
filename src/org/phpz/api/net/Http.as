@@ -16,10 +16,6 @@ package org.phpz.api.net
         
         protected var loader:ApiLoader;
         
-        public function Http()
-        {
-            
-        }
         
         protected function send(url:String, method:String, params:Object = null, headers:Array = null):void
         {

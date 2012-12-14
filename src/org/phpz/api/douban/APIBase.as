@@ -20,10 +20,6 @@ package org.phpz.api.douban
     public class APIBase extends Http 
     {
         
-        public function APIBase()
-        {
-            super();
-        }
         
         protected function apiSend(url:String, method:String, params:Object = null, auth:Boolean = true):void
         {
