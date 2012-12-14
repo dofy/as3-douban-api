@@ -4,38 +4,42 @@ package org.phpz.api.douban
     import org.phpz.api.douban.events.ApiEvent;
 	
 	/**
-	 * ...
+	 * 用户 API
 	 * @author Seven Yu
 	 */
 	public class User extends APIBase
 	{
 		
-        public function User()
-        {
-            super();
-        }
-        
+        /**
+         * 获取当前授权用户信息
+         */
         public function me():void
         {
-            apiSend('/v2/user/~me', URLRequestMethod.GET);
+            apiSend('/v2/user/~me');
         }
         
-        public function getUser(name:String):void
+        /**
+         * 获取用户信息
+         * @param name  用户 uid 或 数字 id
+         */
+        public function user(name:String):void
         {
-            apiSend('/v2/user/' + name, URLRequestMethod.GET);
+            apiSend('/v2/user/' + name);
         }
         
-        public function test():void
+        /**
+         * 搜索用户
+         * @param q     全文检索关键词
+         * @param start 起始元素
+         * @param count 结果返回数
+         */
+        public function search(q:String, start:int = 0, count:int = 20):void
         {
-            apiSend('/app/test.php', URLRequestMethod.GET, null, false);
+            apiSend('/v2/user', URLRequestMethod.GET, { 'q':q, 'start':start, 'count':count } );
         }
         
-        protected override function succFunc(url:String, data:Object):void
-        {
-            trace('SUCCESS >>>', url, '\n', JSON.stringify(data));
-            dispatchEvent(new ApiEvent(ApiEvent.SUCCESS, url, data));
-        }
-		
+        public function User();
+        
 	}
 	
 }

@@ -10,12 +10,14 @@ package org.phpz.api.douban.vo
         public var code:int;
         public var msg:String;
         public var request:String;
+        public var httpStatus:int;
         
         public function ErrorVO(data:Object) 
         {
             code = data['code'];
             msg = data['msg'];
             request = data['request'];
+            httpStatus = data['http_status'];
         }
         
     }
