@@ -9,7 +9,7 @@ package org.phpz.api.douban.vo
         
         public var id:String;
         
-        public function UserVO() 
+        public function UserVO(data:Object) 
         {
             
         }

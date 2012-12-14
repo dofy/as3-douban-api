@@ -4,9 +4,7 @@ package org.phpz.api.net
     import flash.events.EventDispatcher;
     import flash.events.HTTPStatusEvent;
     import flash.events.IOErrorEvent;
-    import flash.net.URLLoader;
     import flash.net.URLRequest;
-    import flash.net.URLRequestHeader;
     import flash.net.URLVariables;
     
 	/**
@@ -16,26 +14,21 @@ package org.phpz.api.net
     public class Http extends EventDispatcher
     {
         
-        protected var loader:URLLoader;
-        protected var request:URLRequest;
-        protected var vars:URLVariables;
+        protected var loader:ApiLoader;
         
-        protected var succFunc:Function;
-        protected var failFunc:Function;
-        
-        public function Http(succFunc:Function = null, failFunc:Function = null)
+        public function Http()
         {
-            this.succFunc = succFunc;
-            this.failFunc = failFunc;
+            
         }
         
-        protected function send(url:String, method:String, params:Object = null, headers:Vector.<URLRequestHeader> = null):void
+        protected function send(url:String, method:String, params:Object = null, headers:Array = null):void
         {
-            request = new URLRequest(url);
+            loader = new ApiLoader();
+            var request:URLRequest = new URLRequest(url);
             request.method = method;
-            request.requestHeaders = headers || [];
+            request.requestHeaders = headers;
             
-            vars = new URLVariables();
+            var vars:URLVariables = new URLVariables();
             if (params)
             {
                 for (var key:String in params)
@@ -48,6 +41,8 @@ package org.phpz.api.net
             loader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
             loader.addEventListener(HTTPStatusEvent.HTTP_RESPONSE_STATUS, statusHandler);
             loader.addEventListener(Event.COMPLETE, completeHandler);
+            
+            loader.load(request);
         }
         
         protected function ioErrorHandler(e:IOErrorEvent):void 
@@ -57,34 +52,14 @@ package org.phpz.api.net
         
         protected function statusHandler(e:HTTPStatusEvent):void 
         {
-            trace('status: ', request.url, e.status);
-            status = e.status;
+            var loader:ApiLoader = e.target as ApiLoader;
+            trace('STATUS:', e.status, loader.url);
+            loader.httpStatus = e.status;
         }
         
         protected function completeHandler(e:Event):void 
         {
-            var data:Object;
-            try 
-            {
-                data = JSON.parse(e.target.data);
-                if (!data['code'])
-                {
-                    data['code'] = 0;
-                }
-            }
-            catch (e:Error)
-            {
-                data = {"code": 7999, "msg": "UNKNOW ERROR!! (" + status + ")"};
-            }
-            
-            if (data.code > 0)
-            {
-                failFunc && failFunc(data, request.url);
-            }
-            else
-            {
-                succFunc && succFunc(data, request.url);
-            }
+            trace('<COMPLETE>\n', e.target.data);
         }
         
     }
